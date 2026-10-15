@@ -1,0 +1,342 @@
+:root {
+    --bg-1: #ffffff;
+    --bg-2: #f2f2f2;
+    --card : #ffffff;
+    --primary: #EB7907;
+    --accent: #ff6f61;
+    --text: #563B11;
+    --dark: #563B11;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+    --radius: 8px;
+    --header-h:76px;
+
+    --btn-main: #EB7907;
+    --btn-hover: #ef9438;
+    --btn-soft:#f7c99c;
+    --btn-gray: #b3b3b3;
+    --btn-gray: #f2f2f2;
+
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background-color: var(--bg-1);
+    font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text);
+    font-weight: 600;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* SECTION */
+
+.section {
+    padding: 80px 0;
+    background: var(--bg-1);
+}
+
+.section-alt {
+    padding: 80px 0;
+    background: var(--bg-2);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-title h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.section-title h2::after {
+    content: '';
+    display: block;
+    width:  56px;
+    height: 3px;
+    background: var(--accent);
+    margin: 12px auto 0;
+    border-radius: 3px;
+}
+
+.section-title p {
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.eyebrow {
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: .12em;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+
+
+.btn-rensa {
+    --bg: var(--btn-main);
+    --fg: #fff;
+    --line: var(--btn-main);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 12px 28px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    transition: .25s;
+}
+
+.btn-rensa:hover {
+    background: var(--btn-hover);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-rensa:active {
+    background: var(--btn-soft);
+    color: var(--btn-main);
+    /* transform: translateY(-2px); */
+}
+
+.card-rensa{   
+    height: 100%;
+    padding: 28px;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 24px rgba(0,0,0,.06);
+    transition: .25s;
+}
+
+.card-rensa:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,0,0,.1);
+}
+
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    background:transparent;
+    transition: box-shadow .3s;
+}
+
+.scrolled .header {
+    box-shadow: 0 4px 20px rgba(0,0,0,.18);
+    background:#fff;
+}
+
+.header .logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: #000;
+    font-size: 1.8rem;
+}
+
+.header .logo span {
+    color: var(--accent);
+}   
+
+.navmenu ul {
+    display: flex;
+    gap: 32px;
+    margin:0;
+    padding:0;
+    list-style: none;
+}   
+
+.navmenu a {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 500;
+}
+
+.scrolled .navmenu a{
+    color: #000;
+}
+
+.navmenu a:hover {
+    font-weight: 800;
+}
+
+.header .btn-konsultasi {
+    --bg: var(--btn-main);
+    --fg: #fff;
+    --line: var(--btn-main);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 12px 28px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    transition: .25s;
+}
+
+.header .btn-konsultasi:hover{
+    background: var(--btn-hover);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.header .btn-konsultasi:active{
+    background: var(--btn-soft);
+    color: var(--btn-main);
+    transform: translateY(-2px);
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .header .btn-konsultasi {
+        display: none;
+    }
+
+    .scrolled .header {
+    box-shadow: 0 4px 20px rgba(0,0,0,.18);
+    background:#fff;
+    }
+
+    .header .logo{
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+    }
+
+    .navmenu {
+        position: fixed;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        background: var(--primary);
+        display: none;
+        padding: 16px 24px 24px;
+    }
+
+    .navmenu ul {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .nav-open .navmenu {
+        display:block;
+    }
+}
+/* 
+    ==========================================
+    Hero
+    ========================================== */
+
+    .hero .carousel-item{
+        /* margin-top: var(--header-h); */
+        cursor: grab;
+    }
+
+    .hero .carousel-item {
+        height: min(78vh, 640px);
+    }
+
+    .hero .hero-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .hero .carousel-item::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(20, 32, 27, .78) 0%, rgba(20, 32, 27, 0.1));
+    }
+
+    .hero .hero-caption {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero h1{
+        max-width: 620px;
+        color: #fff;
+        font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+        line-height: 1.2;
+    }
+
+    .hero p{
+        max-width: 500px;
+        margin-bottom: 28px;
+        color: rgba(255, 255, 255, .85);
+        font-size: 1.1rem;
+    }
+/* 
+    indikator panah dan titik */
+
+    .hero .carousel-indicators,
+    .hero .carousel-control-prev,
+    .hero .carousel-control-next {
+        z-index: 3;
+    }
+
+    .hero .carousel-control-prev,
+    .hero .carousel-control-next {
+        width: 6%;
+    }
+    
+    @media (max-width: 768px) {
+        .hero .carousel-control-prev,
+        .hero .carousel-control-next {
+            display: none;
+        }
+    }
+
