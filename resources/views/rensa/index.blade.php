@@ -4,6 +4,7 @@
 
 @section('content')
     @include('rensa.sections.hero')
+    @include('rensa.sections.stats')
     @include('rensa.sections.about')
     @include('rensa.sections.why-us')
     @include('rensa.sections.services')

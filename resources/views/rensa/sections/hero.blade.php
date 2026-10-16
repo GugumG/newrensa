@@ -2,8 +2,8 @@
 $slides = [
     [
         'gambar' => 'img/gambar1.webp',
-        'judul' => 'Title 1',
-        'teks' => 'Description 1'
+        'judul' => 'Interior Modern,Kualitas Premium',
+        'teks' => 'Wujudkan ruang impian Anda dengan material terbaik dan tim profesional'
     ],
     [
         'gambar' => 'img/gambar2.webp',
