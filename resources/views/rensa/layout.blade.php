@@ -31,5 +31,7 @@
 
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('rensa/main.js') }}?v={{ @filemtime(public_path('rensa/main.js')) }}"></script>
+    <script src="{{ asset('rensa/coverflow.js') }}?v={{ @filemtime(public_path('rensa/coverflow.js')) }}"></script>
+
 </body>
 </html>
