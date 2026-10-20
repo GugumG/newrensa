@@ -16,9 +16,8 @@
 
 <section id="about" class="section about">
     <div class="container">
-        <div class="row align-items-center">
             <div class="row align-item-center g-4 g-lg-5">
-                <div class="col-lg-6">
+                <div class="col-lg-6 gallery-card order-last order-lg-first">
                     <h2 class="judul-garis">ABOUT US</h2>
                     @foreach ($about['paragraf'] as $paragraf)
                         <p>{{ $paragraf }}</p>
@@ -40,7 +39,8 @@
                     </div>
                         <a href="#katalog" class="altbtn-rensa">Lihat Detail </a>
                 </div>
+
+                
             </div>
-        </div>
     </div>
 </section>

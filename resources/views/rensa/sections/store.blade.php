@@ -1,1 +1,0 @@
-rensaweb/resources/views/rensa/sections/about.blade.php

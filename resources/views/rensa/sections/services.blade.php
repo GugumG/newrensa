@@ -1,31 +1,27 @@
 @php 
 $layanan = [
-    ['gambar' => 'img/gambar1.webp','judul' => 'Pengiriman Cepat','text' => 'Kami menyediakan pengiriman langsung kepada user'],
-    ['gambar' => 'img/gambar2.webp','judul' => 'Pengiriman Cepat','text' => 'Kami menyediakan pengiriman langsung kepada user'],
-    ['gambar' => 'img/gambar1.webp','judul' => 'Pengiriman Cepat','text' => 'Kami menyediakan pengiriman langsung kepada user'],
-    ['gambar' => 'img/gambar2.webp','judul' => 'Pengiriman Cepat','text' => 'Kami menyediakan pengiriman langsung kepada user'],
+    ['gambar' => 'tools','judul' => 'Pengiriman Cepat','text' => 'Kami menyediakan pengiriman langsung kepada user'],
+    ['gambar' => 'truck','judul' => 'Pengiriman Cepat','text' => 'Kami menyediakan pengiriman langsung kepada user'],
+    ['gambar' => 'chat-heart','judul' => 'Pengiriman Cepat','text' => 'Kami menyediakan pengiriman langsung kepada user'],
+    ['gambar' => 'box','judul' => 'Pengiriman Cepat','text' => 'Kami menyediakan pengiriman langsung kepada user'],
     ];
 @endphp
 
 <section id="services" class="section services">
-    <!-- <img src="img/gambar1.webp" class="service-img"> -->
     <div class="container">
         <div class="section-title">
             <h2>Our Service</h2>
-            <p>Kami menyediakan pengiriman langsung kepada user.</p>
         </div>
     </div>
-    <div class="cf-warp" data-coverflow>
+    <div class="cf-warp" data-coverflow data-auto="4000">
         <div class="cf">
             <div class="cf-track">
                 @foreach ($layanan as $item)
-                <figure class="cf-item">
-                    <img src="{{ asset($item['gambar']) }}" alt="{{ $item['judul'] }}" loading="lazy">
-                    <figcaption class="cf-cap">
-                        <h3>{{  $item['judul'] }}</h3>
-                        <p>{{  $item['text']  }}</p>
-                    </figcaption>
-                </figure>
+                <div class="cf-item">
+                    <i class="bi bi-{{ $item['gambar'] }} cf-ikon"></i>
+                    <h3>{{ $item['judul']}}</h3>
+                    <p>{{ $item['text']}}</p>
+                </div>
                 @endforeach
             </div>
 

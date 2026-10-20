@@ -6,7 +6,7 @@ function pasangCoverflow(wrap) {
     const dots  = [...wrap.querySelectorAll('.cf-dots button')];
     const n     = kartu.length;
 
-    const TAMPIL = 2;
+    const TAMPIL = 1;
     const BISA_PUTAR = n >=TAMPIL * 2 + 2;
     let aktif = Math.floor( n / 2 );
     let habisGeser = false;
@@ -26,27 +26,31 @@ function pasangCoverflow(wrap) {
         const dRedup = parseFloat(gaya.getPropertyValue('--redup'));
         const putar = parseFloat(gaya.getPropertyValue('--putar')) || 0;
         
+        function taruh(el, d, redup){
+            el.style.transform = `translate(-50%, -50%) translateX(${d * jarak}px)`
+            + (putar ? ` rotateY(${-d * putar}deg)`: '')
+            + `scale(${Math.max(0, 1 - Math.abs(d) * dSkala)})`;
+        }
         kartu.forEach((el, i) =>{
-            const d = jarakLingkar(i);
-            const j = Math.abs(d);
-            const simpan = j > TAMPIL;
 
-            const lompat = el.dataset.d !== undefined && Math.abs(d - el.dataset.d) > 1;
-            if (lompat) el.style.transition = 'none';
+            const lama = el.dataset.d === undefined ? null : Number(el.dataset.d);
+            let d = jarakLingkar(i);
+            const simpan = Math.abs(d) > TAMPIL;
 
-                       el.style.transform = `translate(-50%, -50%) translateX(${d * jarak}px)`
-            + (putar ? ` rotateY(${-d * putar}deg)` : '')
-            + ` scale(${Math.max(0, 1 - j * dSkala)})`;
-            el.style.opacity = simpan ? 0 : Math.max(0, 1 - j * dRedup);
-            el.style.zIndex = 50 - j;
-            el.classList.toggle('is-simpan', simpan);
-            el.classList.toggle('is-aktif', d === 0);
-            el.setAttribute('aria-hidden',simpan);
+            if(simpan) d = Math.sign(lama || d) * (TAMPIL + 1);
 
-            if (lompat){
+            if (lama !== null && Math.abs(d - lama) > n/2){
+                el.style.transition = 'none';
+                taruh(el, Math.sign(d) * (TAMPIL + 1 ),0);
                 el.offsetWidth;
                 el.style.transition = '';
             }
+
+            taruh(el, d, simpan ? 0 : Math.max(0, 1 - Math.abs(d) * dRedup));
+            el.style.zIndex = 50 - Math.abs(d);
+            el.classList.toggle('is-simpan', simpan);
+            el.classList.toggle('is-aktif',d === 0);
+            el.setAttribute('aria-hidden', simpan);
             el.dataset.d = d;
         });
 
@@ -99,6 +103,41 @@ function pasangCoverflow(wrap) {
         geser(e.deltaX > 0 ? 1 : -1);
     }, { passive: false});
 
+    const JEDA = Number(wrap.dataset.auto) ||0;
+    const kurangiGerak = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer = null;
+    let kelihatan = false;
+    let diHover = false;
+    let diFokus = false;
+
+    function berhenti() {
+        clearInterval(timer);
+        timer = null;
+    }
+
+    function mulai(){
+        berhenti();
+        if (!JEDA || kurangiGerak || !kelihatan || diHover || diFokus || document.hidden) return;
+        timer = setInterval(() => geser(1), JEDA);
+    }
+
+    wrap.addEventListener('pointerenter', (e)=>{
+        if(e.pointerenter === 'mouse') {
+            diHover = true; berhenti();
+        }
+    })
+
+    wrap.addEventListener('pointerleave',(e)=>{
+        if(e.pointerleave === 'mouse'){
+            diHover = false; berhenti();
+        }
+    })
+
+    wrap.addEventListener('focusin', (e)=>{
+        if(e.target.matches(':focus-visible')){
+            
+        }
+    })
     window.addEventListener('resize', gambar);
 
     gambar();

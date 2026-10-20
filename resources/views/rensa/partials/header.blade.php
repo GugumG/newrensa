@@ -9,8 +9,9 @@
 @endphp
 <header class="header">
     <div class="container d-flex align-items-center justify-content-between">
-        <a href="{{ url('rensa') }}" class="logo">
-            Rensa<span>.</span>
+        <a href="{{ url('/')}}" class="logo">
+        <img src="img/Rensa Logo Ori Black.svg" alt="logo rensa" class="logohitam">
+        <img src="img/Rensa Logo Ori White.svg" alt="logo rensa" class="logoputih">
         </a>
         <nav class="navmenu">
             <ul>
