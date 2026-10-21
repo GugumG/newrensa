@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" href="{{ asset('img/favicon/favicon.ico') }}" sizes="32x32" rounded>
+    <link rel="icon" href="{{ asset('img/favicon/favicon.svg') }}" type="image/svg+xml" rounded>
+    <link rel="apple-touch-icon" href="{{ asset('img/favicon/apple-touch-icon.png') }} " rounded>
     <title>@yield('title','Rensa')</title>
 
     <!-- font google -->

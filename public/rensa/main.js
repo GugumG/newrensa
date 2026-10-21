@@ -5,53 +5,67 @@ function cekScroll() {
 window.addEventListener('scroll', cekScroll);
 cekScroll();
 
-// MENU MOBILE
+// MENU MOBILE (drawer dari kiri)
 
-const navToggle = document.querySelector('.nav-toggle');
+const navToggle  = document.querySelector('.nav-toggle');
+const navClose   = document.querySelector('.nav-close');
+const navOverlay = document.querySelector('.nav-overlay');
+
+function bukaMenu() {
+    document.body.classList.add('nav-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+}
 
 function tutupMenu() {
     document.body.classList.remove('nav-open');
     navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.querySelector('i').className = 'bi bi-list';
 }
 
-navToggle.addEventListener('click', function() {
-    const terbuka = document.body.classList.toggle('nav-open');
-    navToggle.setAttribute('aria-expanded', terbuka);
-    navToggle.querySelector('i').className = terbuka ? 'bi bi-x-lg' : 'bi bi-list';
-});
+navToggle.addEventListener('click', bukaMenu);
+navClose.addEventListener('click', tutupMenu);
+navOverlay.addEventListener('click', tutupMenu);
 
-// animasi buka tutup nav
-
-document.querySelectorAll('.navmenu a').forEach(function(link){
+// Pilih menu = drawer langsung nutup
+document.querySelectorAll('.navmenu a').forEach(function (link) {
     link.addEventListener('click', tutupMenu);
 });
 
-// untuk slide geser pake mouse
+// Tombol Esc di keyboard juga nutup
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') tutupMenu();
+});
 
-const heroCarousel = document.querySelector('#heroCarousel');
+// MENU AKTIF: tebalkan menu sesuai section yang lagi ada di tengah layar
 
-if (heroCarousel){
-    const carousel = bootstrap.Carousel.getOrCreateInstance(heroCarousel);
-    let mulaiX = null;
+const menuLinks = document.querySelectorAll('.navmenu a[href^="#"]');
 
-    heroCarousel.addEventListener('mousedown', function (e){
-        mulaiX = e.clientX;
-    })
+const pantauSection = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        menuLinks.forEach(function (a) {
+            a.classList.toggle('aktif', a.getAttribute('href') === '#' + entry.target.id);
+        });
+    });
+}, { rootMargin: '-45% 0px -50% 0px' });
 
-    heroCarousel.addEventListener('mouseup', function(e){
-        if (mulaiX === null) return;
-        const jarak = e.clientX - mulaiX;
-        if (jarak > 50) carousel.prev();
-        if (jarak < 50) carousel.next();
-        mulaiX = null;
-    })
+menuLinks.forEach(function (a) {
+    const section = document.querySelector(a.getAttribute('href'));
+    if (section) pantauSection.observe(section);
+});
 
-    heroCarousel.addEventListener('mouseleave', function(){
-        mulaiX = null;
-    })
-    heroCarousel.addEventListener('dragstart', function(e){
-        e.preventDefault();
-    })
+
+// STORE: panah mati di halaman pertama / terakhir
+
+const storeCarousel = document.querySelector('#storeCarousel');
+const storePrev = document.querySelector('[data-bs-target="#storeCarousel"][data-bs-slide="prev"]');
+const storeNext = document.querySelector('[data-bs-target="#storeCarousel"][data-bs-slide="next"]');
+
+if (storeCarousel && storePrev && storeNext) {
+    const jumlahHalaman = storeCarousel.querySelectorAll('.carousel-item').length;
+
+    storeCarousel.addEventListener('slid.bs.carousel', function (e) {
+        storePrev.disabled = e.to === 0;
+        storeNext.disabled = e.to === jumlahHalaman - 1;
+    });
 }
 
