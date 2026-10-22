@@ -69,3 +69,27 @@ if (storeCarousel && storePrev && storeNext) {
     });
 }
 
+
+// TESTIMONI: panah geser kartu (muter: dari akhir balik ke awal)
+
+document.querySelectorAll('[data-testi]').forEach(function (wrap) {
+    const baris = wrap.querySelector('.testi-baris');
+
+    function geserTesti(arah) {
+        const kartu   = baris.querySelector('.testi-card');
+        const langkah = kartu.offsetWidth + parseFloat(getComputedStyle(baris).columnGap);
+        const ujung   = baris.scrollWidth - baris.clientWidth;
+
+        if (arah > 0 && baris.scrollLeft >= ujung - 5) {
+            baris.scrollTo({ left: 0, behavior: 'smooth' });        // udah di akhir: balik ke awal
+        } else if (arah < 0 && baris.scrollLeft <= 5) {
+            baris.scrollTo({ left: ujung, behavior: 'smooth' });    // udah di awal: lompat ke akhir
+        } else {
+            baris.scrollBy({ left: arah * langkah, behavior: 'smooth' });
+        }
+    }
+
+    wrap.querySelector('.testi-prev').addEventListener('click', function () { geserTesti(-1); });
+    wrap.querySelector('.testi-next').addEventListener('click', function () { geserTesti(1); });
+});
+

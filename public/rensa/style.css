@@ -1353,7 +1353,7 @@ STORE
     font-weight: 650;
 }
 
-.store-nav-warp{
+.store-nav-wrap{
     display: flex;
     justify-content: flex-end;
     gap: 12px;
@@ -1373,8 +1373,8 @@ STORE
     transition: .25s;
 }
 
-.store-nav::disable{
-    border: #ccc;
+.store-nav::disabled{
+    border-color: #ccc;
     background: transparent;
     color: #bbb;
     cursor: default;
@@ -1391,6 +1391,137 @@ STORE
         width: 96px;
         height: 96px;
     }
+}
+
+
+
+/* ==========================================================
+TESTIMONI
+========================================================== */
+
+
+.testimoni{
+    background: 
+        radial-gradient(circle at 100% 0, rgba(201 ,160 ,150 ,.35), transparent 40%),
+        radial-gradient(circle at 0 100%, rgba(201, 160,150, .35), transparent 50%),
+        #fbf8f3;
+}
+
+.testimoni .section-title h2::after{
+    background: currentColor;
+}
+
+.testi-baris{
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 6px 0 20px;
+    scrollbar-width: none;
+}
+
+.testi-baris::-webkit-scrollbar{
+    display: none;
+}
+
+.testi-card{
+    flex: 0 0 calc((100% - 24px) /2);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+.testi-bintang{
+    margin-bottom: 10px;
+    color: #f5a524;
+    font-size: .9rem;
+    letter-spacing: 2px;
+}
+
+.testi-teks{
+    flex:1;
+    margin: 0;
+    color: #5c54c5;
+    font-size: .85rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.testi-foto{
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #efe9e1;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.testi-orang h4{
+    margin: 0;
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.testi-peran{
+    color: #8a8a8a;
+    font-size: .75rem;
+}
+
+.testi-nav-wrap{
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.testi-nav{
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--text);
+    color: #fff;
+    font-size: 1.1rem;
+    transition: .25s;
+}
+
+.testi-judul-img{
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+}
+
+.testi-nav:hover{
+    transform: translateY(-2px);
+}
+
+@media (max-width:991px){
+    .testi-judul-img{
+    max-width: 180px;
+    margin: 0 auto;
+}
+}
+
+@media (max-width:575px){
+    .testi-baris{
+        gap: 14px;
+    }
+
+    .testi-card{
+        flex-basis: 85%;
+    }
+
 }
 
 .footer {

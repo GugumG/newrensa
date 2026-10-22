@@ -13,7 +13,6 @@
             <a href="{{ url('/')}}" class="logo">
                 <img src="img/Rensa Logo Ori Black.svg" alt="logo rensa" class="logohitam">
                 <img src="img/Rensa Logo Ori White.svg" alt="logo rensa" class="logoputih">
-
             </a>    
 
             <nav class="navmenu" id="navmenu">
@@ -34,15 +33,15 @@
                     @endforeach
                 </ul>
             </nav>
-        <div class="nav-overlay"></div> 
+
+            <div class="nav-overlay"></div> 
+
             <button type="button" class="nav-toggle" aria-label="Buka Menu" aria-expanded="false">
                 <i class="bi bi-list"></i>
             </button>
             
             <a href="https://api.whatsapp.com/send?phone=6281547204444&text=Hello%20Toko%20Interior%20dan%20Decorator%20%7C%20Pusat%20WPC%21" class="btn-rensa btn-konsultasi" target="_blank" rel="noopener">
                 Konsultasi
-            </a>
-            
-        
+            </a>       
     </div>
 </header>
