@@ -93,3 +93,15 @@ document.querySelectorAll('[data-testi]').forEach(function (wrap) {
     wrap.querySelector('.testi-next').addEventListener('click', function () { geserTesti(1); });
 });
 
+
+// form kontak 
+
+const formKontak = document.querySelector('.contact-form');
+
+if (formKontak){
+    formKontak.addEventListener('submit',function (e){
+        e.preventDefault();
+        formKontak.querySelector('.form-note').classList.remove('d-none');
+    })
+}
+
