@@ -10,11 +10,11 @@ $mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4698.4665486
 
 <section id="contact" class="section contact">
     <div class="container">
-        <div class="container-title">
+        <div class="section-title">
             <h2>CONTACT US</h2>
         </div>
         <div class="contact-card">
-            <div class="row-lg-0">
+            <div class="row g-0">
                 <div class="col-lg-5">
                     <div class="contact-kiri">
                         <h2 class="contact-judul">Yuk,Ceritakan Kebutuhanmu</h2>
@@ -50,8 +50,8 @@ $mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4698.4665486
                                 <label for="email" class="form-label">Email <small>(Optional)</small></label>
                                 <input type="email" id="email" class="form-control" placeholder="Masukan Alamat Email Anda">
                             </div>
-                            <div class="col-12 contact-aksi">
-                                <label for="pesan">Pesan</label>
+                            <div class="col-12">
+                                <label for="pesan" class="form-label">Pesan</label>
                                 <textarea rows="5" id="pesan" class="form-control" placeholder="Masukan pesan atau pertanyaan" required></textarea>
                             </div>
                             <div class="col-12 contact-aksi">

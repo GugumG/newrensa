@@ -99,9 +99,18 @@ document.querySelectorAll('[data-testi]').forEach(function (wrap) {
 const formKontak = document.querySelector('.contact-form');
 
 if (formKontak){
-    formKontak.addEventListener('submit',function (e){
+   const tombolKirim = formKontak.querySelector('button[type=submit]');
+
+   function cekForm() {
+            tombolKirim.disable = !formKontak.checkValidity();
+   }
+
+   formKontak.addEventListener('input',cekForm);
+   cekForm();
+
+   formKontak.addEventListener('submit', function(e){
         e.preventDefault();
         formKontak.querySelector('.form-note').classList.remove('d-none');
-    })
+   });
 }
 

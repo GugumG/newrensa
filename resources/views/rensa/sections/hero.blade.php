@@ -7,8 +7,8 @@ $slides = [
     ],
     [
         'gambar' => 'img/gambar2.webp',
-        'judul' => 'Title 2',
-        'teks' => 'Description 2'
+        'judul' => 'Interior Modern,Kualitas Premium',
+        'teks' => 'Wujudkan ruang impian Anda dengan material terbaik dan tim profesional'
     ]
 ];
 @endphp
