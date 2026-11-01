@@ -1,6 +1,8 @@
 // HEADER
+const adaHero = document.querySelector('.hero');
+
 function cekScroll() {
-    document.body.classList.toggle('scrolled', window.scrollY > 40);
+    document.body.classList.toggle('scrolled', !adaHero || window.scrollY > 40);
 }
 window.addEventListener('scroll', cekScroll);
 cekScroll();
@@ -112,5 +114,23 @@ if (formKontak){
         e.preventDefault();
         formKontak.querySelector('.form-note').classList.remove('d-none');
    });
+}
+
+
+
+// ========================================================
+// KATALOG
+// ========================================================
+
+const kategoriAktif = document.querySelector('.katalog-kategori a.aktif');
+
+if (kategoriAktif) {
+    const daftar = kategoriAktif.closest('.katalog-kategori');
+    const kotak  = daftar.getBoundingClientRect();
+    const tombol = kategoriAktif.getBoundingClientRect();
+
+
+    daftar.scrollLeft += (tombol.left - kotak.left) - (kotak.width - tombol.width) / 2;
+    daftar.scrollTop += (tombol.top - kotak.top) - (kotak.height - tombol.height) / 2;
 }
 

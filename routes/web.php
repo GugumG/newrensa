@@ -21,7 +21,7 @@ Route::get('/katalog', function(){
         $urut = 'terbaru';
     }
 
-    $produk = collect(config('produk,items'))
+    $produk = collect(config('produk.items'))
     ->when($aktif !== 'all', fn ($daftar) => $daftar->where('kategori',$aktif))
 
     ->when($cari !== '', fn($daftar) => $daftar->filter(fn ($item) => str_contains(strtolower($item['nama']),strtolower($cari))));
@@ -40,4 +40,4 @@ Route::get('/katalog', function(){
         'urut' => $urut,
         'produk' =>$produk,
     ]);
-})->nama('katalog');
+})->name('katalog');

@@ -22,7 +22,7 @@
     <!-- css asli -->
     <link href="{{ asset('rensa/style.css') }}?v={{ @filemtime(public_path('rensa/style.css')) }}" rel="stylesheet">
 </head>
-<body>
+<body  class="@yield('bodyclass')">
     @include('rensa.partials.header')
 
     <main>

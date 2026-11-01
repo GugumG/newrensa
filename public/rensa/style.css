@@ -1815,3 +1815,262 @@ padding: 28px 20px;
 }
 
 
+
+
+/* 
+==================================================
+HALAMAN KATALOG
+================================================== */
+
+    .katalog{
+        padding: calc(var(--header-h) + 8px) 0 80px;
+    }
+
+    .breadcrumb-rensa{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 24px 0 28px;
+        color: #8a8a8a;
+        font-size: .8rem;
+        font-weight: 300;
+    }
+
+    .katalog-kategori{
+        position: sticky;
+        top: calc(var(--header-h) + 16px);
+        max-height: calc(100vh - var(--header-h) - 48px);
+        margin: 0;
+        padding: 0;
+        overflow-y: auto;
+        list-style: none;
+        scrollbar-width: thin;
+        scrollbar-color: #c4c4c4 transparent;
+    }
+
+    .katalog-kategori a {
+        display: block;
+        padding: 12px 16px;
+        border-left: 3px solid transparent;
+        color: #6b6b6b;
+        font-size: .9rem;
+        font-weight: 400;
+        transition: .2s;
+    }
+
+    .katalog-kategori a::hover{
+        color: var(--text);
+    }
+
+    .katalog-kategori a.aktif{
+        border-left-color: var(--primary);
+        color: var(--text);
+        font-weight: 700;
+    }
+
+    .katalog-alat{
+        display: flex;
+        gap: 16px;
+        margin-bottom: 28px;
+    }
+
+    .katalog-cari,
+    .katalog-urut{
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 44px;
+        margin: 0;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .katalog-cari{
+        flex: 1;
+    }
+
+
+    .katalog-cari:focus-within,
+    .katalog-urut:focus-within{
+        border-color: var(--primary);
+    }
+
+    .katalog-cari i,
+    .katalog-urut i{
+        position: absolute;
+        color: #8a8a8a;
+        pointer-events: none;
+    }
+
+    .katalog-cari i,
+    .katalog-urut i{
+        position: absolute;
+        color: #8a8a8a;
+        pointer-events: none;
+    }
+
+    .katalog-cari i,
+    .katalog-urut .bi-filter-left{
+        left: 14px;
+    }
+
+    .katalog-urut .bi-chevron-down{
+        right: 14px;
+        font-size: .8rem;
+    }
+
+    .katalog-cari input,
+    .katalog-urut select {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: .9rem;
+        font-weight: 400;
+    }
+
+    .katalog-cari input {
+        padding: 0 14px 0 42px;
+    }
+
+    .katalog-cari input::placeholder{
+        color: #b3b3b3;
+    }
+
+    .katalog-urut{
+        flex: 0 0 170px;
+    }
+
+    .katalog-urut select{
+        padding: 0 36px 0 42px;
+        appearance: none;
+        cursor: pointer;
+    }
+
+    .katalog-card{
+        height: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    }
+
+    .katalog-card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+    }
+
+    .katalog-info{
+        padding: 12px 14px 16px;
+    }
+
+    .katalog-badge{
+        display: inline-block;
+        margin-bottom: 8px;
+        padding: 2px 10px;
+        border-radius: 999px;
+        background: #e6eed9;
+        color: #4d5b3a;
+        font-size: .7rem;
+        font-weight: 600;
+    }
+
+    .katalog-info h3{
+        margin: 0 0 4px;
+        font-size: .9rem;
+        font-weight: 700;
+    }
+
+    .katalog-info h3::after{
+        display: none;
+    }
+
+    .katalog-info p {
+        margin: 0;
+        color: #5c5c5c;
+        font-size: .72rem;
+        font-weight: 400;
+    }
+
+    .katalog-kosong{
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .katalog-kosong > i {
+        color: #c4c4c4;
+        font-size: 2.5rem;
+    }
+
+    .katalog-kosong h3 {
+        margin: 12px 0 6px;
+    }
+
+    .katalgo-kosong h3::after{
+        display: none;
+    }
+
+    .katalog-kosong p { 
+        margin-bottom: 20px;
+        color: #6b6b6b;
+        font-weight: 400;
+    }
+
+    .katalog-kosong .altbtn-rensa {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    @media (max-width: 991px) {
+        .katalog-kategori{
+            position: static;
+            display: flex;
+            gap: 8px;
+            max-height: none;
+            padding-bottom: 6px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: none;
+        }
+
+        .katalog-kategori::-webkit-scrollbar{
+            display: none;
+        }
+
+        .katalog-kategori a {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .katalog-kategori a.aktif {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: #fff;
+        }
+    }
+
+    @media(max-width: 575px){
+        .katalog-alat{
+            gap: 10px;
+        }
+        .katalog-urut{
+            flex-basis: 130px;
+        }
+
+        .katalog-info{
+            padding: 10px 10px 12px;
+        }
+
+        .katalog-info h3{
+            font-size: .8rem;
+        }
+    }
+    
