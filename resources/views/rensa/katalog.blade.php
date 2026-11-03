@@ -8,10 +8,9 @@
 
 
 @php 
-
-$placeholder = $aktif === 'all'
-? 'Cari nama produk di semua kategori'
-: 'Cari nama produk di kategori' . $kategori[$aktif];
+    $placeholder = $aktif === 'all'
+    ? 'Cari nama produk di semua kategori'
+    : 'Cari nama produk di kategori' . $kategori[$aktif];
 @endphp
 
 
@@ -61,24 +60,16 @@ $placeholder = $aktif === 'all'
 
                 @if ($produk -> isEmpty())
                     <div class="katalog-kosong">
-                        <i class="bi bi-search"></i>
+                        <img src="{{asset('img/Black.png')}}" alt="Produk tidak ditemukan" loading="lazy">
                         <h3>Produk tidak ditemukan</h3>
                         <p>Coba gunakan kata kunci lain untuk menemukan produk yang kamu cari</p>
-                        <a href="{{route('katalog')}}" class="altbtn-rensa"></a>
                     </div>
 
                 @else
                     <div class="row g-3 g-md-4">
                         @foreach ($produk as $item)
                             <div class="col-6 col-md-4">
-                                <article class="katalog-card">
-                                    <img src="{{asset($item['gambar'])}}" alt="{{$item['nama']}}" loading="lazy">
-                                    <div class="katalog-info">
-                                        <span class="katalog-badge">{{$kategori[$item['kategori']] ?? $item['kategori']}}</span>
-                                        <h3>{{$item['nama']}}</h3>
-                                        <p>{{$item['ukuran']}}</p>
-                                    </div>
-                                </article>
+                               @include('rensa.partials.kartu-produk')
                             </div>
                         @endforeach
                     </div>

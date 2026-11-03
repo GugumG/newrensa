@@ -1,11 +1,11 @@
 @php
     $menu = [
-        ['label' => 'Beranda', 'href' => '#hero'],
-        ['label' => 'Katalog', 'href' => '#katalog'],
-        ['label' => 'Hasil Pasang', 'href' => '#testimoni'],
-        ['label' => 'Kalkulator', 'href' => '#faq'],
-        ['label' => 'Showroom', 'href' => '#store'],
-        ['label' => 'Contact', 'href' => '#contact'],
+        ['label' => 'Beranda', 'href' => '/'],
+        ['label' => 'Katalog', 'href' => '/katalog'],
+        ['label' => 'Hasil Pasang', 'href' => '/testimoni'],
+        ['label' => 'Kalkulator', 'href' => '/faq'],
+        ['label' => 'Showroom', 'href' => '/#store'],
+        ['label' => 'Contact', 'href' => '/#contact'],
     ];
 @endphp
 <header class="header">

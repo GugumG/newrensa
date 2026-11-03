@@ -41,3 +41,22 @@ Route::get('/katalog', function(){
         'produk' =>$produk,
     ]);
 })->name('katalog');
+
+
+Route::get('/katalog/{slug}', function($slug){
+    $semua = collect(config('produk.items'));
+    $produk = $semua->firstWhere('slug',$slug);
+
+    abort_if(!$produk, 404);
+
+    $lainnya = $semua
+    ->where('slug','!=',$slug)
+    ->sortByDesc(fn ($item) => $item['kategori'] === $produk['kategori'])
+    ->take(3);
+
+    return view('rensa.produk', [
+        'produk' => $produk,
+        'kategori' => config('produk.kategori'),
+        'lainnya' => $lainnya,
+    ]);
+})->name('produk.detail');

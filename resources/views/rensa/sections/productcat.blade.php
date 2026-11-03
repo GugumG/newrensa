@@ -1,15 +1,15 @@
 @php
 
 $produk =[
-    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (1).png', 'link' => '#', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
-    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (2).png', 'link' => '#', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
-    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (3).png', 'link' => '#', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
-    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (4).png', 'link' => '#', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
-    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (5).png', 'link' => '#', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
-    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (6).png', 'link' => '#', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
-    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (7).png', 'link' => '#', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
-    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (8).png', 'link' => '#', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
-    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1.png', 'link' => '#', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
+    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (1).png', 'link' => 'katalog', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
+    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (2).png', 'link' => 'katalog', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
+    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (3).png', 'link' => 'katalog', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
+    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (4).png', 'link' => 'katalog', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
+    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (5).png', 'link' => 'katalog', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
+    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (6).png', 'link' => 'katalog', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
+    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (7).png', 'link' => 'katalog', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
+    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1 (8).png', 'link' => 'katalog', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
+    ['nama' => 'Wallpanel', 'gambar' => 'img/produk/ZWK04 1.png', 'link' => 'katalog', 'text' => 'Panel dinding motif kayu yang dipasang tanpa bongkar tembok, cocok untuk ruang tamu dan kamar.'],
 ]
 @endphp
 

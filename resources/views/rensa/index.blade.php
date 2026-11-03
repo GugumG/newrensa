@@ -10,7 +10,6 @@
     @include('rensa.sections.why-us')
     @include('rensa.sections.productcat')
     @include('rensa.sections.highlight')
-    @include('rensa.sections.katalog')
     @include('rensa.sections.store')
     @include('rensa.sections.testimoni')
     @include('rensa.sections.faq')

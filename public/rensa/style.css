@@ -1706,6 +1706,7 @@ padding: 28px 20px;
     padding: 64px 0;
     background: var(--bg-1);
     color: #000;
+    box-shadow: 0 1px 20px rgba(0,0,0,.18);
 }
 
 .footer-card{
@@ -1716,7 +1717,7 @@ padding: 28px 20px;
     background: linear-gradient(90deg, #563B11, #847565);
     color: #fff;
     gap: 20px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     padding-top: 15px;
     padding-bottom: 10px;
     border-top: 1px solid rgba(255, 255, 255, .12);
@@ -2012,7 +2013,7 @@ HALAMAN KATALOG
         margin: 12px 0 6px;
     }
 
-    .katalgo-kosong h3::after{
+    .katalog-kosong h3::after{
         display: none;
     }
 
