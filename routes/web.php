@@ -54,7 +54,7 @@ Route::get('/katalog/{slug}', function($slug){
     ->sortByDesc(fn ($item) => $item['kategori'] === $produk['kategori'])
     ->take(3);
 
-    return view('rensa.produk', [
+    return view('rensa.sections.produk', [
         'produk' => $produk,
         'kategori' => config('produk.kategori'),
         'lainnya' => $lainnya,

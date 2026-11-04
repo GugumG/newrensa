@@ -2074,4 +2074,404 @@ HALAMAN KATALOG
             font-size: .8rem;
         }
     }
-    
+
+/* 
+===========================================================
+Halaman  detail produk
+=========================================================== */
+    .katalog-card{
+        display: block;
+        color: var(--text);
+        transition: transform .25s, box-shadow .25s;
+    }
+
+    .katalog-card:hover{
+        color: var(--text);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+
+    .breadcrumb-rensa .breadcrumb-link{
+        font-size: inherit;
+    }
+
+    .pd-atas{
+        padding : calc(var(--header-h) + 8px) 0 64px;
+    }
+
+    .pd-foto{
+        position: relative;
+        padding-bottom: 32px;
+    }
+
+    .pd-foto .carousel-inner{
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .pd-foto .carousel-item img{
+        display: block;
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+
+    .pd-limited {
+        position: absolute;
+        top: 16px;
+        left: -7px;
+        z-index: 3;
+        width: 140px;
+        height: auto;
+        pointer-events: none;
+
+    }
+
+    .pd-caption {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: rgba(40,40,40,.55);
+        color: #fff;
+        font-size: .75rem;
+        font-weight: 400;
+    }
+
+    .pd-titik{
+        bottom: -32px;
+        gap: 6px;
+        margin: 0;
+    }
+
+    .pd-titik [data-bs-target]{
+        width: 10px;
+        height: 4px;
+        margin: 0;
+        border: 0;
+        border-radius: 2px;
+        background: #c4c4c4;
+        opacity: 1;
+        transition: width .3s , background .3s ;
+    }
+
+    .pd-titik .active{
+        width: 22px;
+        background: var(--text);
+    }
+
+    .pd-tanah{
+        position: absolute;
+        top: 50%;
+        z-index: 3;
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #fff;
+        color: #1a1a1a;
+        font-size: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,.15);
+        transform: translateY(-50%);
+    }
+
+    .pd-panah-kiri{
+        left: 16px;
+    }
+    .pd-panah-kanan{
+        right: 16px;
+    }
+
+    .pd-info{
+        padding: 24px 28px;
+        border-radius: 12px;
+        background: #f7f7f7;
+    }
+
+    .pd-judul{
+        margin: 12px  0 20px;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        line-height: 1.2;
+    }
+
+    .pd-judul::after{
+        display: none;
+    }
+
+    .pd-tab{
+        display: inline-flex;
+        margin-bottom: 16px;
+        overflow: hidden;
+        border: 1.5px solid var(--primary);
+        border-radius: 999px;
+    }
+
+    .pd-tab button{
+        flex: 1;
+        padding: 8px 16px;
+        border: 0;
+        background: #fff;
+        color: var(--text);
+        font-size: .85rem;
+        font-weight: 700;
+    }
+
+    .pd-tab button.active{
+        background: var(--primary);
+        color: #fff;
+    }
+
+    .pd-info p{
+        margin: 0 ;
+        color: #5c5c5c;
+        font-size: .85rem;
+        font-weight: 400;
+        line-height: 1.6;
+    }
+
+    .pd-spek {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 8px 24px;
+        margin:0;
+        font-size: .9rem;
+    }
+
+    .pd-spek dt{
+        font-weight: 700;
+    }
+
+    .pd-spek dd{
+        margin: 0;
+        font-weight: 400;
+        color: #5c5c5c;
+    }
+
+    .pd-kode-judul{
+        margin: 24px 0 10px;
+        font-size: .9rem;
+        font-weight: 700;
+    }
+
+    .pd-kode-judul::after{
+        display: none;
+    }
+
+
+    .pd-kode{
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
+    }
+
+    .pd-kode button{
+        aspect-ratio: 1/1;
+        padding: 2px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        background: none;
+    }
+
+    .pd-kode img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .pd-kode button::hover img{
+        opacity: .8;
+    }
+
+    .pd-kode button.aktif{
+        border-color: var(--primary);
+    }
+
+    .pd-keunggulan{
+        padding: 28px 0;
+        background: linear-gradient(90deg, #563b11, #847565);
+        color: #fff;
+    }
+
+    .pd-keunggulan-grid{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px 64px;
+    }
+
+    .pd-keunggulan-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 120px;
+        font-size: .8rem;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .pd-keunggulan-item i{
+        font-size: 2.6rem;
+        line-height: 1;
+    }
+
+    .pd-galeri .carousel-inner{
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .pd-galeri-foto{
+        display: block;
+        width: 100%;
+        aspect-ratio: 4/3;
+        max-height: 80vh;
+        object-fit: cover;
+    }
+
+    .pd-zoom{
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(0,0,0,.45);
+        color: #fff;
+        font-size: 1.1rem;
+    }
+
+    .pd-zoom:hover{
+        background: rgba(0,0,0,.65);
+        color: #fff;
+    }
+
+    .pd-galeri-kode{
+        position: absolute;
+        left: 24px;
+        bottom: 24px;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 40px 8px 8px;
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .pd-galeri-kode img{
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    .pd-galeri-kode strong{
+        display: block;
+        font-size: .95rem;
+    }
+
+    .pd-galeri-kode span{
+        color: #5c5c5c;
+        font-size: .75rem;
+        font-weight: 400;
+    }
+
+    .pd-thumb-wrap{
+        position: relative;
+        margin-top: 16px;
+    }
+
+    .pd-thumb{
+        display: flex;
+        gap: 16px;
+        padding: 4px 2px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .pd-thumb::-webkit-scrollbar{
+        display: none;
+    }
+
+    .pd-thumb button{
+        flex: 0 0 calc((100% - 5 * 16px) / 6); 
+        aspect-ratio: 1/1 ;
+        padding: 0;
+        overflow: hidden;
+        border: 2px solid transparent;
+        border-radius: 12px;
+        background: none;
+        scroll-snap-align: start;
+    }
+
+    .pd-thumb img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .pd-thumb img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .pd-thumb button.aktif{
+        border-color: var(--text);
+    }
+
+    .pd-lainya{
+        padding-bottom: 80px;
+    }
+
+    .pd-garis {
+        margin: 0 0 64px;
+        border: 0;
+        border-top: 1px solid #ddd;
+        opacity: 1;
+    }
+
+    @media (max-width: 575px) {
+        .pd-panah-kiri {
+        left: 8px;
+        }
+        .pd-panah-kanan {
+        right: 8px;
+        }
+        .pd-info {
+        padding: 20px;
+        }
+        .pd-keunggulan-grid {
+        gap: 20px 12px;
+        }
+        .pd-keunggulan-item {
+        width: calc(50% - 6px); /* 2 kolom */
+        }
+        .pd-galeri-kode {
+        left: 12px;
+        bottom: 12px;
+        padding-right: 20px;
+        }
+        .pd-thumb {
+        gap: 10px;
+        }
+        .pd-thumb button {
+        flex-basis: calc((100% - 3 * 10px) / 4); /* HP: 4 foto kelihatan */
+}
+}
+
+
+
+

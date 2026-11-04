@@ -7,12 +7,12 @@
 @section('content')
 
 @php
-    $varian = $produk['varian'] ?? [];
+    $varian = $produk['kode'] ?? [];
     $spesifikasi = $produk['spesifikasi'] ?? [];
     $keunggulan = $produk['keunggulan'] ?? [];
     $galeri = $produk['galeri'] ?? [];
 
-    $slides = $varian ?: [['kode' => null],'nama' => null, 'foto' => $produk['gambar']]];
+    $slides = $varian ?: [['kode' => null],'nama' => null, 'foto' => $produk['gambar']];
 
     $dataKode = collect($varian)->keyBy('kode');
 @endphp
@@ -20,7 +20,7 @@
     <section class="pd-atas">
         <div class="container">
             <nav class="breadcrumb-rensa" aria-label="Breadcrumb">
-                <a href="{{url('/')}}" aria-label="Beranda" ><i class="bi-bi-house-door-fill"></i></a>
+                <a href="{{url('/')}}" aria-label="Beranda" ><i class="bi bi-house-door-fill"></i></a>
                 <span>/</span>
                 <a href="{{route('katalog')}}" aria-label="Katalog" class="breadcrumb-link">Katalog</a>
                 <span>/</span>
@@ -30,13 +30,12 @@
             <div class="row g-4 g-lg-5">
                 <div class="col-lg-6">
                     <div class="pd-foto">
-                        <div class="col-lg-6">
-                            <div class="pd-foto">
+
                                 @if (! empty($produk['limited']))
-                                    <span class="pd-limited">Limited Stock</span>
+                                    <img src="{{ asset('img/limited.png') }}" alt="Limited Stock" class="pd-limited">
                                 @endif
                                 <div id="fotoProduk" class="carousel slide" data-bs-touch="true">
-                                    @if (coungt($slides) > 1)
+                                    @if (count($slides) > 1)
                                         <div class="carousel-indicators pd-titik">
                                             @foreach ($slides as $s)
                                                 <button type="button" data-bs-target="#fotoProduk" data-bs-slide-to="{{ $loop->index }}" @class(['active' => $loop->first]) aria-label="Foto {{ $loop->iteration }}"></button>
@@ -81,7 +80,7 @@
                                     <p>{{ $produk['deskripsi'] ?? 'Deskripsi produk tidak tersedia.' }}</p>
                                 </div>
                                 <div class="tab-pane fade" id="tab-spesifikasi" role="tabpanel">
-                                    <dl>
+                                    <dl class="pd-spek">
                                         @foreach ($spesifikasi as $label => $isi)
                                             <dt>{{ $label }}</dt>
                                             <dd>{{ $isi }}</dd>

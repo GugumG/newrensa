@@ -28,8 +28,12 @@
                     </button>
                 </div>
                 <ul>
-                    @foreach ($menu as $menu)
-                        <li><a href="{{ $menu['href'] }}">{{ $menu['label'] }}</a></li>
+                    @foreach ($menu as $item)
+                        {{-- Tebal kalau alamat halaman diawali link menunya: /katalog dan
+                        /katalog/... = menu Katalog --}}
+                        <li><a href="{{ $item['href'] }}" @class(['aktif' =>
+                        str_starts_with(request()->url(), $item['href'])])>{{ $item['label'] }}</a>
+                        </li>
                     @endforeach
                 </ul>
             </nav>

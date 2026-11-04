@@ -134,3 +134,28 @@ if (kategoriAktif) {
     daftar.scrollTop += (tombol.top - kotak.top) - (kotak.height - tombol.height) / 2;
 }
 
+
+
+// =====================================================
+// DETAIL PRODUK: kotak kode & foto kecil galeri ikut nandain foto yang lagi tampil
+// =====================================================
+document.querySelectorAll('.carousel[id]').forEach(function (carousel) {
+// Tombol di LUAR carousel yang nunjuk ke carousel ini (bukan titik bawaan Bootstrap)
+const pilihan = [...document.querySelectorAll('[data-bs-target="#' +
+carousel.id + '"][data-bs-slide-to]')]
+.filter(function (t) { return !t.closest('.carousel-indicators'); });
+if (!pilihan.length) return; // carousel lain (hero, store) dilewati
+carousel.addEventListener('slide.bs.carousel', function (e) {
+pilihan.forEach(function (t) {
+const aktif = Number(t.dataset.bsSlideTo) === e.to;
+t.classList.toggle('aktif', aktif);
+if (!aktif) return;
+// Deretannya aja yang digeser (bukan halamannya) sampai yang aktif ada di tengah
+const deret = t.parentElement;
+const kotak = deret.getBoundingClientRect();
+const tombol = t.getBoundingClientRect();
+deret.scrollBy({ left: (tombol.left - kotak.left) - (kotak.width
+- tombol.width) / 2, behavior: 'smooth' });
+});
+});
+});
