@@ -8,17 +8,18 @@
 
 @php
     $varian = $produk['kode'] ?? [];
-    $spesifikasi = $produk['spesifikasi'] ?? [];
+    $spesifikasi = ['Ukuran' => $produk['ukuran']] + ($produk['spesifikasi'] ?? []);
     $keunggulan = $produk['keunggulan'] ?? [];
     $galeri = $produk['galeri'] ?? [];
 
-    $slides = $varian ?: [['kode' => null],'nama' => null, 'foto' => $produk['gambar']];
+    $sliderKode = $varian ?: [['kode' => null],'nama' => null, 'foto' => $produk['gambar']];
 
     $dataKode = collect($varian)->keyBy('kode');
 @endphp
 
     <section class="pd-atas">
         <div class="container">
+
             <nav class="breadcrumb-rensa" aria-label="Breadcrumb">
                 <a href="{{url('/')}}" aria-label="Beranda" ><i class="bi bi-house-door-fill"></i></a>
                 <span>/</span>
@@ -29,80 +30,119 @@
         
             <div class="row g-4 g-lg-5">
                 <div class="col-lg-6">
-                    <div class="pd-foto">
+                    <div class="pd-foto tab-content">
+                                @foreach ($sliderKode as $k)
+                                    @php
+                                      $daftarFoto = (array) ($k['foto'] ?? $produk['gambar']);
+                                      $idSlider = 'slider-'.$loop->index;  
+                                    @endphp
 
-                                @if (! empty($produk['limited']))
-                                    <img src="{{ asset('img/limited.png') }}" alt="Limited Stock" class="pd-limited">
-                                @endif
-                                <div id="fotoProduk" class="carousel slide" data-bs-touch="true">
-                                    @if (count($slides) > 1)
-                                        <div class="carousel-indicators pd-titik">
-                                            @foreach ($slides as $s)
-                                                <button type="button" data-bs-target="#fotoProduk" data-bs-slide-to="{{ $loop->index }}" @class(['active' => $loop->first]) aria-label="Foto {{ $loop->iteration }}"></button>
-                                            @endforeach
+                                    <div @class(['tab-pane', 'fade', 'show active' => $loop->first]) id="kode-{{ $loop->index}}" role="tabpanel">
+                                        @if (! empty($k['limited']))
+                                            <img src="{{ asset('img/limited.png') }}" alt="Limited Stock" class="pd-limited">
+                                        @endif
+                                        <div id="{{ $idSlider }}" class="carousel slide" data-bs-touch="true">
+                                            @if (count($daftarFoto) > 1)
+                                            <div class="carousel-indicators pd-titik">
+                                                @foreach ($daftarFoto as $Foto)                                                   
+                                                            <button type="button" data-bs-target="#{{ $idSlider }}" data-bs-slide-to="{{$loop->index}}" @class(['active' =>  $loop->first]) aria-label="Foto {{ $loop->iteration}}">
+                                                            </button>
+                                                @endforeach
+                                            </div>
+                                            @endif
+
+                                            <div class="carousel-inner">
+                                                @foreach ($daftarFoto as $foto)
+                                                    <div @class(['carousel-item','active'=>$loop->first])>
+                                                        <img src="{{asset($foto)}}" alt="{{$produk['nama']}} {{$k['nama']}}" loading="{{ $loop->parent->first ? 'eager' : 'lazy'}}">
+                                                        @if ($k['kode'])
+                                                        <span class="pd-caption">{{$k['kode']}} | {{$k['nama']}}</span>
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            @if (count($daftarFoto) > 1)
+                                                <button class="pd-panah pd-panah-kiri" type="button" data-bs-target="#{{$idSlider}}" data-bs-slide="prev" aria-label="Foto Sebelumnya ">
+                                                    <i class="bi bi-chevron-left"></i>
+                                                </button>
+                                                <button class="pd-panah pd-panah-kanan" type="button" data-bs-target="#{{$idSlider}}" data-bs-slide="next" aria-label="Foto Berikutnya ">
+                                                    <i class="bi bi-chevron-right"></i>
+                                                </button>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endforeach
+                    </div>
+                </div>
+
+                {{-- Kanan: nama, tab deskripsi/spesifikasi, kode --}}
+                <div class="col-lg-6">
+                    <div class="pd-info">
+                        <span class="katalog-badge">{{ $kategori[$produk['kategori']] ?? $produk['kategori'] }}</span>
+                        <h1 class="pd-judul">{{ $produk['nama'] }}</h1>
+
+                        {{-- Tab Bootstrap: klik tombol = tampilkan isi yang id-nya sama dengan data-bs-target --}}
+                        <div class="pd-tab nav" role="tablist">
+                            <button class="active" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#tab-deskripsi" aria-controls="tab-deskripsi" aria-selected="true">Deskripsi Produk</button>
+                            <button type="button" role="tab" data-bs-toggle="tab" data-bs-target="#tab-spesifikasi" aria-controls="tab-spesifikasi" aria-selected="false">Spesifikasi Produk</button>
+                        </div>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tab-deskripsi" role="tabpanel">
+                                <p>{{ $produk['deskripsi'] ?? 'Deskripsi produk tidak tersedia.' }}</p>
+                            </div>
+                            <div class="tab-pane fade" id="tab-spesifikasi" role="tabpanel">
+                                {{-- Tiap baris bisa dibuka-tutup (Collapse Bootstrap). Awalnya kebuka semua ("collapse show") --}}
+                                <div class="pd-spek">
+                                    @if (! empty($produk['struktur']))
+                                        <div class="pd-spek-item">
+                                            <button class="pd-spek-judul" type="button" data-bs-toggle="collapse" data-bs-target="#spek-struktur" aria-expanded="true" aria-controls="spek-struktur">
+                                                Struktur <i class="bi bi-chevron-up"></i>
+                                            </button>
+                                            <div class="collapse show" id="spek-struktur">
+                                                <div class="pd-spek-isi">
+                                                    <img src="{{ asset($produk['struktur']) }}" alt="Struktur {{ $produk['nama'] }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     @endif
 
-                                    <div class="carousel-inner">
-                                        @foreach ($slides as $s)
-                                            <div @class(['carousel-item', 'active' => $loop->first])>
-                                                <img src="{{ asset($s['foto']) }}" alt="{{ $produk['nama'] }} {{ $s['nama'] }}" loading="lazy">
-                                                @if ($s['kode'])
-                                                    <span class="pd-caption">{{ $s['kode'] }} | {{ $s['nama'] }}</span>
-                                                @endif
+                                    @foreach ($spesifikasi as $label => $isi)
+                                        <div class="pd-spek-item">
+                                            <button class="pd-spek-judul" type="button" data-bs-toggle="collapse" data-bs-target="#spek-{{ $loop->index }}" aria-expanded="true" aria-controls="spek-{{ $loop->index }}">
+                                                {{ $label }} <i class="bi bi-chevron-up"></i>
+                                            </button>
+                                            <div class="collapse show" id="spek-{{ $loop->index }}">
+                                                <div class="pd-spek-isi">{{ $isi }}</div>
                                             </div>
-                                        @endforeach
+                                        </div>
+                                    @endforeach
                                 </div>
-
-                                @if (count($slides) > 1)
-                                    <button class="pd-panah pd-panah-kiri" type="button" data-bs-target="#fotoProduk" data-bs-slide="prev" aria-label="Foto Sebelumnya">
-                                        <i class="bi bi-chevron-left"></i>
-                                    </button>
-                                    <button class="pd-panah pd-panah-kanan" type="button" data-bs-target="#fotoProduk" data-bs-slide="next" aria-label="Foto Selanjutnya">
-                                        <i class="bi bi-chevron-right"></i>
-                                    </button>
-                                @endif
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="pd-info">
-                            <span class="katalog-badge">{{ $kategori[$produk['kategori']] ?? $produk['kategori'] }}</span>
-                            <h1 class="pd-judul">{{ $produk['nama'] }}</h1>
 
-                            <div class="pd-tab nav" role="tablist">
-                                <button class="active" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#tab-deskripsi" aria-controls="tab-deskripsi" aria-selected="true">Deskripsi Produk</button>  
-                                <button type="button" role="tab" data-bs-toggle="tab" data-bs-target="#tab-spesifikasi" aria-controls="tab-spesifikasi" aria-selected="false">Spesifikasi Produk</button> 
-                            </div>
+                    @if ($varian)
+                        <h2 class="pd-kode-judul">Kode</h2>
 
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="tab-deskripsi" role="tabpanel">
-                                    <p>{{ $produk['deskripsi'] ?? 'Deskripsi produk tidak tersedia.' }}</p>
-                                </div>
-                                <div class="tab-pane fade" id="tab-spesifikasi" role="tabpanel">
-                                    <dl class="pd-spek">
-                                        @foreach ($spesifikasi as $label => $isi)
-                                            <dt>{{ $label }}</dt>
-                                            <dd>{{ $isi }}</dd>
-                                        @endforeach
-                                    </dl>
-                                </div>
+                        {{-- Kotak kode = tombol Tab Bootstrap: klik = slider kiri ganti ke foto-foto kode ini --}}
+                        <div class="pd-kode" role="tablist">
+                            @foreach ($varian as $v)
+                                <button type="button" role="tab" data-bs-toggle="tab" data-bs-target="#kode-{{ $loop->index }}"
+                                    @class(['active' => $loop->first]) aria-selected="{{ $loop->first ? 'true' : 'false' }}"
+                                    title="{{ $v['kode'] }} | {{ $v['nama'] }}" aria-label="{{ $v['kode'] }} {{ $v['nama'] }}">
+                                    <img src="{{ asset($v['motif']) }}" alt="">
+                                    @if (! empty($v['limited']))
+                                        <span class="pd-kode-limited">Limited Stock</span>
+                                    @endif
+                                </button>
+                            @endforeach
                         </div>
-                    </div>
-
-                        @if ($varian)
-                            <h2 class="pd-kode-judul">Kode</h2>
-                            <div class="pd-kode">
-                                @foreach ($varian as $v)
-                                    <button type="button" data-bs-target="#fotoProduk" data-bs-slide-to="{{ $loop->index }}" @class(['aktif' => $loop->first]) title="{{ $v['kode'] }} | {{ $v['nama'] }}" aria-label="{{ $v['kode'] }} | {{ $v['nama'] }}">
-                                        <img src="{{ asset($v['motif']) }}" alt="{{ $v['kode'] }} | {{ $v['nama'] }}" loading="lazy">
-                                    </button>
-                                @endforeach
-                            </div>       
-                        @endif                 
-                    </div>
+                    @endif
                 </div>
+
             </div>
+        </div>
     </section>
 
 

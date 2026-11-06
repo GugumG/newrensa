@@ -42,10 +42,10 @@ return [
             ],
 
             'kode' => [
-                ['kode' => 'RP06', 'nama' => 'French Walnut', 'motif' => 'img/gambar1.webp', 'foto' => 'img/gambar1.webp'],
-                ['kode' => 'RP07', 'nama' => 'Ash Latte',     'motif' => 'img/gambar2.webp', 'foto' => 'img/gambar2.webp'],
-                ['kode' => 'RP08', 'nama' => 'Natural Oak',   'motif' => 'img/gambar1.webp', 'foto' => 'img/gambar1.webp'],
-                ['kode' => 'RP09', 'nama' => 'Dark Walnut',   'motif' => 'img/gambar2.webp', 'foto' => 'img/gambar2.webp'],
+                    ['kode' => 'RP06', 'nama' => 'French Walnut', 'motif' => 'img/produk_detail/rw01kotak.webp', 'limited' => true, 'foto' => ['img/produk_detail/rw01pasang.png', 'img/produk_detail/rw01btg.png', 'img/produk_detail/rw01kotak.webp']],
+                    ['kode' => 'RP07', 'nama' => 'Ash Latte',     'motif' => 'img/gambar2.webp', 'foto' => ['img/gambar2.webp', 'img/gambar1.webp']],
+                    ['kode' => 'RP08', 'nama' => 'Natural Oak',   'motif' => 'img/gambar1.webp', 'foto' => 'img/gambar1.webp'],
+                    ['kode' => 'RP09', 'nama' => 'Dark Walnut',   'motif' => 'img/gambar2.webp', 'limited' => true, 'foto' => 'img/gambar2.webp'],
             ],
 
             // 'ikon' = nama ikon Bootstrap Icons (tanpa "bi-"), bukan alamat gambar
